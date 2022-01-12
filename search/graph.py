@@ -21,8 +21,40 @@ class Graph:
         * If there is an end node and a path does not exist, return None
 
         """
-        return
+        graph = self.graph #create graph
+        
+        adjacency_list = {} #generate an empty dictionary to become the adjacency list
+        for n,nbrsdict in graph.adjacency(): #loop through the nodes and their neighbor dictionaries
+            holder = []
+            for neighbors in nbrsdict: #convert the neighbor dictionaries into lists
+                holder.append(neighbors)
+            adjacency_list[n] = holder #add node as the key and neighbors as the value into the dictionary
+            
+        queue = [] 
+        trajectories = []
+        visited = []
+    
+        queue.append(start)
+        trajectories.append([start])
+        visited.append(start)
+    
+        while queue:
+            node = queue.pop(0) 
+            path = trajectories.pop(0) 
+            
+            if node == end: 
+                return path
+    
+            for neighbor in adjacency_list[node]: #loop through the node neighbors
+                if neighbor not in visited: 
+                    new_path = list(path) 
+                    new_path.append(neighbor)
+                    trajectories.append(new_path) #append updated paths to trajectories
+                    queue.append(neighbor) #update queue
+                    visited.append(neighbor) #update visited
+        return visited #if no endpoint given, return visited 
 
+    
 
 
 
