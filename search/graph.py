@@ -52,7 +52,12 @@ class Graph:
                     trajectories.append(new_path) #append updated paths to trajectories
                     queue.append(neighbor) #update queue
                     visited.append(neighbor) #update visited
-        return visited #if no endpoint given, return visited 
+                    
+        if end in graph.nodes():
+            return None
+        
+        else:
+            return visited #if no endpoint given, return visited 
 
     
 
