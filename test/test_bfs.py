@@ -3,7 +3,7 @@ import pytest
 import networkx as nx
 from search import graph
 
-#@pytest.fixture
+@pytest.fixture
 def test_bfs_traversal():
     """
     TODO: Write your unit test for a breadth-first
@@ -13,17 +13,15 @@ def test_bfs_traversal():
     the right number of nodes, in the right order, etc.)
     """
     
-    G = nx.DiGraph()  #generate a dummy graph for unit test
-    G.add_nodes_from(['A','B','C','D','E','F','G'])
-    G.add_edges_from([('A','B'), ('A','C'), ('B','D'),('B','E'),('C','F'),('C','G')])
+    file = '/Users/jonathanzhang/Documents/ucsf/bmi203/homework/project2/data/dummy_network.adjlist'
+    dummy = graph.Graph(file)  #generate a dummy graph object for unit test
         
-    visited = G.bfs('A')
+    visited = dummy.bfs('A') #traverse the graph 
     
     assert visited[0] == 'A' #deterimine if the nodes were visited in the correct order
     assert visited[1] == 'B' or visited[1] == 'C'
     assert visited[2] == 'B' or visited[2] == 'C'
-    
-    assert len(G.nodes()) == len(visited) #check that all nodes were visited
+    assert len(dummy.graph.nodes()) - 1 == len(visited) #check that all nodes were visited (note that node H is not connected and won't be traversed)
     
     
 
@@ -39,16 +37,12 @@ def test_bfs():
     which should return None. 
     """
     
-    G = nx.DiGraph()  #generate a dummy graph for unit test
-    G.add_nodes_from(['A','B','C','D','E','F','G','H'])
-    G.add_edges_from([('A','B'), ('A','C'), ('B','D'),('B','E'),('C','F'),('C','G')])
+    file = '/Users/jonathanzhang/Documents/ucsf/bmi203/homework/project2/data/dummy_network.adjlist'
+    dummy = graph.Graph(file)  #generate a dummy graph object for unit test
     
-    test1 = G.bfs('A','G')
-    test2 = G.bfs('A','H')
+    test1 = dummy.bfs('A','G')
+    test2 = dummy.bfs('A','H')
     
     assert test1 == ['A','C','G']
     assert test2 == None
-    
-
-test_bfs_traversal()
 
