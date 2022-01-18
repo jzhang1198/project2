@@ -30,7 +30,7 @@ class Graph:
                 holder.append(neighbors)
             adjacency_list[n] = holder #add node as the key and neighbors as the value into the dictionary
             
-        queue = [] 
+        queue = [] #generate queue, visited, and trajectory lists
         trajectories = []
         visited = []
     
@@ -38,8 +38,8 @@ class Graph:
         trajectories.append([start])
         visited.append(start)
     
-        while queue:
-            node = queue.pop(0) 
+        while queue: 
+            node = queue.pop(0) #pop current node and path 
             path = trajectories.pop(0) 
             
             if node == end: 
