@@ -12,9 +12,15 @@ def test_bfs_traversal():
     that all nodes are being traversed (ie. returns 
     the right number of nodes, in the right order, etc.)
     """
+     
+    try: #if running on local device, instantiate a Graph object using the following path
+        file = '../data/dummy_network.adjlist'
+        dummy = graph.Graph(file)  
     
-    file = './dummy_network.adjlist'
-    dummy = graph.Graph(file)  #generate a dummy graph object for unit test
+    except: #if running on GitHub actions, instantiate a Graph object using the following path
+        file = 'data/dummy_network.adjlist' 
+        dummy = graph.Graph(file) 
+        
         
     visited = dummy.bfs('A') #traverse the graph 
     
@@ -37,8 +43,13 @@ def test_bfs():
     which should return None. 
     """
     
-    file = './dummy_network.adjlist'
-    dummy = graph.Graph(file)  #generate a dummy graph object for unit test
+    try: #if running on local device, instantiate a Graph object using the following path
+        file = '../data/dummy_network.adjlist'
+        dummy = graph.Graph(file)  
+    
+    except: #if running on GitHub actions, instantiate a Graph object using the following path
+        file = 'data/dummy_network.adjlist' 
+        dummy = graph.Graph(file) 
     
     test1 = dummy.bfs('A','G')
     test2 = dummy.bfs('A','H')
