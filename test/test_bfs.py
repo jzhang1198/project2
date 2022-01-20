@@ -30,7 +30,6 @@ def test_bfs_traversal():
     assert len(dummy.graph.nodes()) - 1 == len(visited) #check that all nodes were visited (note that node H is not connected and won't be traversed)
     
     
-@pytest.fixture
 def test_bfs():
     """
     TODO: Write your unit test for your breadth-first 
