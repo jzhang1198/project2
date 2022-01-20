@@ -46,4 +46,3 @@ def test_bfs():
     assert test1 == ['A','C','G']
     assert test2 == None
 
-
