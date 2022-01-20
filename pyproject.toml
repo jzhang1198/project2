@@ -10,7 +10,8 @@ license = {file = "LICENSE"}
 classifiers = ["License :: OSI Approved :: MIT License"]
 dynamic = ["version", "description"]
 dependencies = [
-#networkx
+#networkx==2.5
+#pytest>=3.0
 ]
 
 [project.urls]
