@@ -13,7 +13,7 @@ def test_bfs_traversal():
     the right number of nodes, in the right order, etc.)
     """
     
-    file = 'dummy_network.adjlist'
+    file = './dummy_network.adjlist'
     dummy = graph.Graph(file)  #generate a dummy graph object for unit test
         
     visited = dummy.bfs('A') #traverse the graph 
@@ -37,7 +37,7 @@ def test_bfs():
     which should return None. 
     """
     
-    file = 'dummy_network.adjlist'
+    file = './dummy_network.adjlist'
     dummy = graph.Graph(file)  #generate a dummy graph object for unit test
     
     test1 = dummy.bfs('A','G')
